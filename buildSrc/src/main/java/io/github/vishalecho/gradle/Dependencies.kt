@@ -20,6 +20,7 @@ object Versions {
     const val appcompat = "1.1.0"
     const val constraintlayout = "1.1.3"
     const val recyclerview = "1.1.0"
+    const val material = "1.2.0-beta01"
 
     const val junit = "4.13"
     const val junitX = "1.1.1"
@@ -32,6 +33,7 @@ object Libs {
     const val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
     const val constraintlayout= "androidx.constraintlayout:constraintlayout:${Versions.constraintlayout}"
     const val recyclerview = "androidx.recyclerview:recyclerview:${Versions.recyclerview}"
+    const val material = "com.google.android.material:material:${Versions.material}"
 }
 
 object TestLibs {

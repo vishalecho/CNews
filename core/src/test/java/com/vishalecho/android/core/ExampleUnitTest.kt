@@ -1,8 +1,7 @@
-package io.github.vishalecho.android.cnews
-
-import org.junit.Test
+package com.vishalecho.android.core
 
 import org.junit.Assert.*
+import org.junit.Test
 
 /**
  * Example local unit test, which will execute on the development machine (host).

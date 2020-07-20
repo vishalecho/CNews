@@ -1,0 +1,81 @@
+import io.github.vishalecho.gradle.Constants
+import io.github.vishalecho.gradle.Libs
+import io.github.vishalecho.gradle.Plugins
+import io.github.vishalecho.gradle.TestLibs
+import io.github.vishalecho.gradle.Versions
+
+apply plugin: Plugins.android_library
+apply plugin: Plugins.kotlin_android
+apply plugin: Plugins.kotlin_kapt
+apply plugin: Plugins.kotlin_android_extensions
+
+android {
+    compileSdkVersion Versions.compileSdk
+    buildToolsVersion Versions.buildTools
+
+    defaultConfig {
+        minSdkVersion Versions.minSdk
+        targetSdkVersion Versions.targetSdk
+        versionCode Versions.versionCode
+        versionName Versions.versionName
+
+        testInstrumentationRunner Constants.AndroidJUnitRunner
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField 'String', 'BASE_URL', '"https://storage.googleapis.com/"'
+        }
+        debug {
+            buildConfigField 'String', 'BASE_URL', '"https://storage.googleapis.com/"'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    api Libs.appcompat
+    api Libs.constraintlayout
+    api Libs.recyclerview
+    api Libs.cardview
+    api Libs.support
+    api Libs.material
+
+    api Libs.lifecycleExt
+    api Libs.lifecycleCommon
+    api Libs.preference_ktx
+    api Libs.roomRuntime
+    api Libs.roomRx
+
+    api Libs.kotlin_stdlib
+
+    api Libs.rxJava
+    api Libs.rxAndroid
+
+    api Libs.dagger
+    kapt Libs.daggerCompiler
+    api Libs.gson
+
+    api Libs.retrofit
+    api Libs.okhttp
+    api Libs.retrofit_converter_gson
+    api Libs.retrofitRxAdapter
+
+    api Libs.picasso
+    api Libs.okhttpDownloader
+
+    api Libs.jodaTime
+    api Libs.stetho
+    api Libs.stetho_okhttp3
+
+    testImplementation TestLibs.junit
+    androidTestImplementation TestLibs.junitX
+}

@@ -1,11 +1,13 @@
 import io.github.vishalecho.gradle.Constants
 import io.github.vishalecho.gradle.Libs
+import io.github.vishalecho.gradle.Modules
 import io.github.vishalecho.gradle.Plugins
 import io.github.vishalecho.gradle.TestLibs
 import io.github.vishalecho.gradle.Versions
 
 apply plugin: Plugins.android_application
 apply plugin: Plugins.kotlin_android
+apply plugin: Plugins.kotlin_kapt
 apply plugin: Plugins.kotlin_android_extensions
 
 android {
@@ -19,6 +21,7 @@ android {
         versionCode Versions.versionCode
         versionName Versions.versionName
 
+        multiDexEnabled true
         testInstrumentationRunner Constants.AndroidJUnitRunner
     }
 
@@ -26,24 +29,54 @@ android {
         viewBinding true
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    //For testing
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        debug {
+            testCoverageEnabled true
+        }
     }
+}
+
+androidExtensions {
+    experimental = true
 }
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation project(Modules.core)
+
+    implementation Libs.multidex
+    implementation Libs.support
     implementation Libs.kotlin_stdlib
     implementation Libs.core_ktx
     implementation Libs.appcompat
     implementation Libs.constraintlayout
     implementation Libs.recyclerview
     implementation Libs.material
+    kapt Libs.daggerCompiler
 
+    //Local unit tests
     testImplementation TestLibs.junit
+    testImplementation TestLibs.mockitoKotlin
+    testImplementation TestLibs.robolectric
+    testImplementation TestLibs.mockWebServer
+    testImplementation TestLibs.livedataTesting
+
     androidTestImplementation TestLibs.junitX
     androidTestImplementation TestLibs.espresso_coreX
 }

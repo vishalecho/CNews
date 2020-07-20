@@ -5,8 +5,6 @@ import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
 import org.joda.time.DateTime
 import org.joda.time.format.ISODateTimeFormat
-import java.lang.IllegalStateException
-import java.sql.Time
 import java.util.concurrent.TimeUnit
 
 /**
@@ -43,7 +41,8 @@ object Sync {
         performPrefsSanityCheck()
 
         if (unit == TimeUnit.MILLISECONDS || unit == TimeUnit.NANOSECONDS
-            || unit == TimeUnit.MICROSECONDS || unit == TimeUnit.SECONDS)
+            || unit == TimeUnit.MICROSECONDS || unit == TimeUnit.SECONDS
+        )
             throw IllegalStateException("Illegal time window")
 
         val currentSavedValue = preferences?.getString(key, "")

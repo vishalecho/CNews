@@ -10,7 +10,7 @@
     </style>
 
     <style name="ToolbarButtonOverflow" parent="android:style/Widget.Holo.Light.ActionButton.Overflow">
-        <item name="android:src">@drawable/ic_baseline_more_horiz_white</item>
+        <item name="android:src">@drawable/ic_baseline_more_horizontal_white</item>
     </style>
 
 </resources>

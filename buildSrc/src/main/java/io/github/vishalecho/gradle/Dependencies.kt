@@ -35,10 +35,16 @@ object Versions {
     const val preference = "1.1.1"
     const val room = "2.0.0"
     const val jodaTime = "2.9.9"
+    const val multidex = "1.0.3"
+    const val picasso = "2.5.2"
+    const val okhttpDownloader = "1.1.0"
 
     const val junit = "4.13"
     const val junitX = "1.1.1"
     const val espresso_coreX = "3.2.0"
+    const val mockitoKotlin = "1.5.0"
+    const val robolectric = "4.3.1"
+    const val core_testing = "2.0.0"
  }
 
 object Libs {
@@ -69,12 +75,19 @@ object Libs {
     const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
     const val roomRx = "androidx.room:room-rxjava2:${Versions.room}"
     const val jodaTime = "joda-time:joda-time:${Versions.jodaTime}"
+    const val multidex = "com.android.support:multidex:${Versions.multidex}"
+    const val picasso = "com.squareup.picasso:picasso:${Versions.picasso}"
+    const val okhttpDownloader = "com.jakewharton.picasso:picasso2-okhttp3-downloader:${Versions.okhttpDownloader}"
 }
 
 object TestLibs {
     const val junit = "junit:junit:${Versions.junit}"
     const val junitX = "androidx.test.ext:junit:${Versions.junitX}"
     const val espresso_coreX = "androidx.test.espresso:espresso-core:${Versions.espresso_coreX}"
+    const val mockitoKotlin = "com.nhaarman:mockito-kotlin:${Versions.mockitoKotlin}"
+    const val robolectric = "org.robolectric:robolectric:${Versions.robolectric}"
+    const val mockWebServer = "com.squareup.okhttp3:mockwebserver:${Versions.okhttp}"
+    const val livedataTesting = "androidx.arch.core:core-testing:${Versions.core_testing}"
 }
 
 object Modules {
